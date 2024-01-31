@@ -12,8 +12,6 @@ import space.keshway.vault.client.model.DataType;
 @RequiredArgsConstructor
 public final class UserDataEncryptionConverter implements AttributeConverter<String, String> {
 
-  private static final int LIST_FIRST_VALUE = 0;
-
   private final EncryptionService encryptionService;
 
   @Override
@@ -24,7 +22,7 @@ public final class UserDataEncryptionConverter implements AttributeConverter<Str
                 encryptionService
                     .encryptLocally(new Data(DataType.USER_DATA, List.of(attr)))
                     .values()
-                    .get(LIST_FIRST_VALUE))
+                    .getFirst())
         .orElse(null);
   }
 
@@ -36,7 +34,7 @@ public final class UserDataEncryptionConverter implements AttributeConverter<Str
                 encryptionService
                     .decryptLocally(new Data(DataType.USER_DATA, List.of(data)))
                     .values()
-                    .get(LIST_FIRST_VALUE))
+                    .getFirst())
         .orElse(null);
   }
 }

@@ -1,6 +1,7 @@
 package space.keshway.vault.client.model;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
-// TODO: check for nulls and empty
-public record Data(DataType type, List<String> values) {}
+public record Data(@NotNull DataType type, @NotEmpty List<String> values) {}

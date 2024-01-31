@@ -34,7 +34,6 @@ final class EncryptionServiceImpl implements EncryptionService {
     return strings.stream().map(Ciphertext::of).toList();
   }
 
-  // TODO: get rid of streams, introduce immutables
   @Override
   public Data encrypt(Data data) {
     return new Data(
